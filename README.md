@@ -1,4 +1,3 @@
-
 ## messagesテーブル
 
 |Column|Type|Options|
