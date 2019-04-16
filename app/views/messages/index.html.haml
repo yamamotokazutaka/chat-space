@@ -9,67 +9,69 @@
         %p.create グループを作成しました
 
       .chat-side
-        .chat-side__.side-header
+        .chat-side__side-header
           %p.user-name test
           %ul.user-menu
+
             %li
-              %a#fine{:href => ""}
-                .fa.fa-edit
+              = link_to do
+                %i.fa.fa-edit
             %li
-              %a#fine{:href => ""}
-                .fa.fa-cog
-        .chat-side__.groups
-          .chat-side__.groups__.group
+              = link_to do
+                %i.fa.fa-cog
+        .chat-side__groups
+          .group
             %p.group-name test_group
             %p.latest-message hello
-          .chat-side__.groups__.group
+          .group
             %p.group-name test_group2
             %p.latest-message goodbye
 
       .chat-main
-        .chat-main__.main-header
-          .chat-main__.main-header__.current-group
+        .chat-main__main-header
+          .current-group
             %h2.group-name test_group
             %ul.member-list
               %li.member Member :
               %li.member yamamoto
               %li.member sato
-          %a#edit{:href => ""}
+          =link_to do
             .edit-btn Edit
-        .chat-main__.messages
-          .chat-main__.messages__.message
-            .chat-main__.messages__.message__.upper-info
+        .chat-main__messages
+          .message
+            .upper-info
               %p.user yamamoto
               %p.date 2019/04/15(mon) 17:42:20
             %p.text こんにちは
-          .chat-main__.messages__.message
-            .chat-main__.messages__.message__.upper-info
+          .message
+            .upper-info
               %p.user sato
               %p.date 2019/04/15(mon) 17:55:20
             %p.text hello
-          .chat-main__.messages__.message
-            .chat-main__.messages__.message__.upper-info
+          .message
+            .upper-info
               %p.user sato
               %p.date 2019/04/15(mon) 17:55:20
             %p.text hello
-          .chat-main__.messages__.message
-            .chat-main__.messages__.message__.upper-info
+          .message
+            .upper-info
               %p.user sato
               %p.date 2019/04/15(mon) 17:55:20
             %p.text hello
-          .chat-main__.messages__.message
-            .chat-main__.messages__.message__.upper-info
+          .message
+            .upper-info
               %p.user sato
               %p.date 2019/04/15(mon) 17:55:20
             %p.text hello
-          .chat-main__.messages__.message
-            .chat-main__.messages__.message__.upper-info
+          .message
+            .upper-info
               %p.user sato
               %p.date 2019/04/15(mon) 17:55:20
             %p.text hello
-        .chat-main__.form
-          .chat-main__.form__.new-message#message
-            .chat-main__.form__.new-message#message__.input-box
+          
+        .chat-main__form
+          .new-message#message
+            .input-box
               %input#main{:placeholder => "type a message" }
                 %label.image-label
                   %i.fa.fa-image
