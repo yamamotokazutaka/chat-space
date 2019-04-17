@@ -100,9 +100,6 @@ body{
               .member-list li+li {
                 margin-left: 0.3rem;
               }
-          a#edit{
-            text-decoration: none;
-          }
             .edit-btn{
               height: 40px;
               line-height: 40px;
@@ -110,7 +107,6 @@ body{
               margin-top: 30px;
               border: solid 1px #38aef0;
               color: #38aef0;
-              text-decoration: none;
           }
         &__messages{
           height: calc(100vh - 190px);
