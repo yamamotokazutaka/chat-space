@@ -1,76 +1,24 @@
-
-%body
-  .flesh-box
-  .wrapper
-    .sign
-      %p.create グループを作成しました
-
-    .chat-side
-      .chat-side__side-header
-        %p.user-name test
-        %ul.user-menu
-
-          %li
-            = link_to do
-              %i.fa.fa-edit
-          %li
-            = link_to do
-              %i.fa.fa-cog
-      .chat-side__groups
-        .group
-          %p.group-name test_group
-          %p.latest-message hello
-        .group
-          %p.group-name test_group2
-          %p.latest-message goodbye
-
-    .chat-main
-      .chat-main__main-header
-        .current-group
-          %h2.group-name test_group
-          %ul.member-list
-            %li.member Member :
-            %li.member yamamoto
-            %li.member sato
-        =link_to "" ,:style =>"text-decoration:none;" do
-          .edit-btn Edit
-      .chat-main__messages
-        .message
-          .upper-info
-            %p.user yamamoto
-            %p.date 2019/04/15(mon) 17:42:20
-          %p.text こんにちは
-        .message
-          .upper-info
-            %p.user sato
-            %p.date 2019/04/15(mon) 17:55:20
-          %p.text hello
-        .message
-          .upper-info
-            %p.user sato
-            %p.date 2019/04/15(mon) 17:55:20
-          %p.text hello
-        .message
-          .upper-info
-            %p.user sato
-            %p.date 2019/04/15(mon) 17:55:20
-          %p.text hello
-        .message
-          .upper-info
-            %p.user sato
-            %p.date 2019/04/15(mon) 17:55:20
-          %p.text hello
-        .message
-          .upper-info
-            %p.user sato
-            %p.date 2019/04/15(mon) 17:55:20
-          %p.text hello
-        
-      .chat-main__form
-        .new-message#message
-          .input-box
-            %input#main{:placeholder => "type a message" }
-              %label.image-label
-                %i.fa.fa-image
-                  %input.file-select{:type => "file"}
-          %input#btn{:type => "submit", :value => "Send"}
+=render 'shared/side_bar'
+.chat-main
+  .chat-main__main-header
+    .current-group
+      %h2.group-name
+        = @group.name
+      %ul.member-list
+        %li.member Member :
+        %li.member 
+          - @group.group_users.each do |group_users|
+            =group_users.user.name
+    =link_to edit_group_path(current_user) ,:style =>"text-decoration:none;" do
+      .edit-btn Edit
+  .messages
+    = render @messages
+  .form
+    = form_for [@group, @message] do |f|
+      .test
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'form__submit'
