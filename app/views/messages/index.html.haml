@@ -9,7 +9,7 @@
         %li.member 
           - @group.group_users.each do |group_users|
             =group_users.user.name
-    =link_to edit_group_path(current_user) ,:style =>"text-decoration:none;" do
+    =link_to edit_group_path(@group.id) ,:style =>"text-decoration:none;" do
       .edit-btn Edit
   .messages
     = render @messages
