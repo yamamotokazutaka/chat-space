@@ -1,7 +1,12 @@
 /*
  *= require font-awesome
  */
-
+@import "config/colors";
 @import "./reset";
 @import "./variable";
 @import "./index";
+@import "modules/side_bar";
+@import "modules/chat";
+@import "modules/user";
+@import "modules/group";
+@import "modules/flash";
