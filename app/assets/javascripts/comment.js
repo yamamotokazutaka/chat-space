@@ -23,6 +23,7 @@ $(document).on('turbolinks:load', function(){
                 </div>`
   return html;
   }
+  
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var message = new FormData(this);
@@ -41,6 +42,7 @@ $(document).on('turbolinks:load', function(){
       $('.messages').append(html);
       $('#message_content').val('');
       $('#message_image').val(''); //input内のメッセージを消す。
+      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight},'fast');
     })
     .fail(function(data){
       alert('エラーが発生したためメッセージは送信できませんでした。');
@@ -48,12 +50,30 @@ $(document).on('turbolinks:load', function(){
     .always(function(data){
       $('.form__submit').prop('disabled',false);
     })
-    .done(function scrollBottom(){
-      var target = $('.message').last();
-      var position = target.offset().top + $('.messages').scrollTop();
-      $('.messages').animate({
-        scrollTop: position
-      }, 300, 'swing');
-    })
   })
-});
+
+    //自動更新実装
+    var interval = setInterval(function(){
+      if (location.pathname.match(/\/groups\/\d+\/messages/)) {
+        var last_message_id = $('.message').last().data('id');
+        $.ajax({
+          url: location.pathname,
+          type: 'GET',
+          data: {id: last_message_id,},
+          dataType: 'json'
+        })
+        .done(function(data){
+          data.forEach(function(message){
+          var html = buildHTML(message);
+          $('.messages').append(html);
+          });
+          $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
+        })
+        .fail(function(data){
+          alert('気にせず頑張れ！');
+        });
+    } else {
+        clearInterval(interval);
+      }
+      }, 5000);
+  });
