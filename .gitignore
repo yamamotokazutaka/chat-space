@@ -17,9 +17,9 @@
 .byebug_history
 public/uploads/*
 
-app/views/users/edit.html.haml
+#app/views/users/edit.html.haml
 
-public
+#public
 
 
 config/secrets.yml
