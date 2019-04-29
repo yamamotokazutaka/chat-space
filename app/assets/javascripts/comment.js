@@ -46,10 +46,10 @@ $(document).on('turbolinks:load', function(){
     })
     
 
-    .fail(function(data){
+    .fail(function(){
       alert('エラーが発生したためメッセージは送信できませんでした。');
-    })
-  })
+    });
+  });
 
     //自動更新実装
     var interval = setInterval(function(){
