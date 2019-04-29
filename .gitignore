@@ -21,6 +21,5 @@ app/views/users/edit.html.haml
 
 public
 
-app/controllers/api/messages_controller.rb
 
-app/views/api/messages/index.json.jbuilder
+config/secrets.yml
