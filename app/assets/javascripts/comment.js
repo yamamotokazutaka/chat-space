@@ -44,11 +44,13 @@ $(document).on('turbolinks:load', function(){
       $('#message_image').val(''); //input内のメッセージを消す。
       $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight},'fast');
     })
-    .fail(function(data){
-      alert('エラーが発生したためメッセージは送信できませんでした。');
-    })
+    
     .always(function(data){
       $('.form__submit').prop('disabled',false);
+    })
+
+    .fail(function(data){
+      alert('エラーが発生したためメッセージは送信できませんでした。');
     })
   })
 
