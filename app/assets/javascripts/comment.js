@@ -45,9 +45,6 @@ $(document).on('turbolinks:load', function(){
       $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight},'fast');
     })
     
-    .always(function(data){
-      $('.form__submit').prop('disabled',false);
-    })
 
     .fail(function(data){
       alert('エラーが発生したためメッセージは送信できませんでした。');
@@ -72,10 +69,10 @@ $(document).on('turbolinks:load', function(){
           $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
         })
         .fail(function(data){
-          alert('気にせず頑張れ！');
+          alert('自動更新に失敗しました');
         });
     } else {
         clearInterval(interval);
       }
-      }, 5000);
+      }, 10000);
   });
