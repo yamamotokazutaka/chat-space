@@ -44,12 +44,13 @@ $(document).on('turbolinks:load', function(){
       $('#message_image').val(''); //input内のメッセージを消す。
       $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight},'fast');
     })
-    
-
-    .fail(function(){
+    .fail(function(data){
       alert('エラーが発生したためメッセージは送信できませんでした。');
-    });
-  });
+    })
+    .always(function(data){
+      $('.form__submit').prop('disabled',false);
+    })
+  })
 
     //自動更新実装
     var interval = setInterval(function(){
@@ -69,10 +70,10 @@ $(document).on('turbolinks:load', function(){
           $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
         })
         .fail(function(data){
-          alert('自動更新に失敗しました');
+          alert('気にせず頑張れ！');
         });
     } else {
         clearInterval(interval);
       }
-      }, 10000);
+      }, 5000);
   });
