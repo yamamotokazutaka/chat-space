@@ -13,5 +13,4 @@ CarrierWave.configure do |config|
   }
 
   config.fog_directory  = 'imageimageimageimage'
-  config.asset_host = 'https://imageimageimageimage.s3.amazonaws.com'
 end
