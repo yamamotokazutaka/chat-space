@@ -34,7 +34,6 @@ $(document).on('turbolinks:load', function(){
       dataType: 'json',
       processData: false,
       contentType: false
-      
     })
     .done(function(data){
       var html = buildHTML(data);
@@ -44,12 +43,11 @@ $(document).on('turbolinks:load', function(){
       $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight},'fast');
       $('.form__submit').prop('disabled',false);
     })
-
     .fail(function(data){
       alert('エラーが発生したためメッセージは送信できませんでした。');
-      $('.form__submit').prop('disabled',false);
-    });
+    })
   })
+
 
     //自動更新実装
     var interval = setInterval(function(){

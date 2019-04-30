@@ -14,7 +14,7 @@ $(document).on('turbolinks:load',function(){
    }
 
    function appendErrMsgToHTML(msg) {
-    var html = `<li>
+    var html = `<li style="list-style:none;">
                   <div class='chat-group-user clearfix'>${ msg }</div>
                 </li>`
     search_list.append(html);
