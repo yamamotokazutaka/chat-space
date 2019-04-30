@@ -1,8 +1,9 @@
 
 $(document).on('turbolinks:load', function(){
   function buildHTML(message) {
-    var img = message.image === null ? '' : `<img src= "${ message.image }">`;
-    var html = `<div class="message" data-id="${message.id}">
+    var content = message.content ? `${ message.content }` : "";
+    var img = message.image ? `<img src= ${ message.image }>` : "";
+    var html = `<div class="message" data-message-id="${message.id}">
                   <div class="upper-message">
                     <p class="user-name">
                       ${message.user_name}
@@ -25,12 +26,12 @@ $(document).on('turbolinks:load', function(){
   
   $('#new_message').on('submit', function(e){
     e.preventDefault();
-    var formData = new FormData(this);
+    var message = new FormData(this);
     var url = (window.location.href);
     $.ajax({  
       url: url,
       type: 'POST',
-      data: formData,
+      data: message,
       dataType: 'json',
       processData: false,
       contentType: false
@@ -49,18 +50,18 @@ $(document).on('turbolinks:load', function(){
     })
     .fail(function(data){
       alert('エラーが発生したためメッセージは送信できませんでした。');
-    });
+    })
   })
 
 
     //自動更新実装
     var interval = setInterval(function(){
       if (location.pathname.match(/\/groups\/\d+\/messages/)) {
-        var last_message_id = $('.message').last().data('id');
+        var last_message_id = $('.message').last().data('message-id');
         $.ajax({
           url: location.pathname,
           type: 'GET',
-          data: {id: last_message_id,},
+          data: {id: last_message_id},
           dataType: 'json'
         })
         .done(function(data){
@@ -78,3 +79,4 @@ $(document).on('turbolinks:load', function(){
       }
       }, 10000);
   });
+  
