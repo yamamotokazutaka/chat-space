@@ -38,10 +38,10 @@ $(document).on('turbolinks:load',function(){
       data: { keyword: input },
       dataType: 'json'
     })
-    .done(function(data) {
+    .done(function(users) {
       $("#user-search-result").empty();
-      if (input.length !== 0) {
-        data.forEach(function(user){
+      if (users.length !== 0) {
+        users.forEach(function(user){
           appendMembers(user);
         });
       }
@@ -55,7 +55,7 @@ $(document).on('turbolinks:load',function(){
   })
 
   $(document).on("click", ".chat-group-user__btn--add", function(){
-    var user_id = $(this).data("id")
+    var user_id = $(this).attr("data-user-id")
     var user_name = $(this).attr('data-user-name')
     appendUser(user_id,user_name)
     $(this).parent().remove();
