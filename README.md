@@ -50,3 +50,51 @@
 ### Association
 - belongs_to :group
 - belongs_to :user
+
+
+
+<!-- mercari -->
+## usersテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|email|string|null: false,unique: true|
+|password|string|null: false|
+|name|string|null: false|
+|exihibit_items|
+|purchace_items|
+
+### Association
+- has_many :items
+- has_many :comments
+
+
+
+## itemsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|description|text|null: false|
+|info| ←items_infoテーブル？
+|image|
+|price|
+|iine|
+|user_name|
+|user_id|
+|coment|
+### Association
+- belongs_to :user
+- has_many :comments
+
+
+
+## comentsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_name|
+|body|
+
+### Association
+- has_many :users
+- has_many :comments
